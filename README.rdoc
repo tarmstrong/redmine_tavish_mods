@@ -1,0 +1,9 @@
+= Tavish's Redmine Mods
+
+This is a plugin that contains Redmine hacks that don't belong in their own plugins.
+
+== Installation
+
+1. Extract/clone to the vendor/plugins/ folder of your Redmine installation.
+2. Enjoy
+
