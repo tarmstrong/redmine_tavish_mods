@@ -1,5 +1,9 @@
 module TavishMods
   class Hooks < Redmine::Hook::ViewListener
+
+    # "Clone this issue as subtask link"
+    render_on(:view_issues_show_description_bottom, :partial => 'issue_description_bottom', :layout => false)
+
     # This creates the additional form element on the timelog edit/new form
     render_on(:view_timelog_edit_form_bottom, :partial => 'timelog_edit_bottom', :layout => false)
 

@@ -1,0 +1,2 @@
+<hr/>
+<%= link_to("Clone this issue as a subtask", {:controller => 'issues', :action => 'new', :project_id => @project, :copy_from => @issue.id, :issue => {:parent_issue_id => @issue}}) if User.current.allowed_to?(:manage_subtasks, @project) %>
