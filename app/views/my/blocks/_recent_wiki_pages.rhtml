@@ -12,12 +12,29 @@ pages_by_date = pages.group_by {|p| p.updated_on.to_date}
 pages_by_parent_id = pages.group_by(&:parent_id)
 %>
 
+<h3>Top 10 Most Recent Wiki Pages</h3>
+
 <table class="list issues">
-  <thead><tr><th>Top 10 Most Recent Wiki Pages</td></tr></thead>
-<% pages[0,10].each do |page | %>
-  <tr><td>
-  <%=link_to(h(page.pretty_title), {:controller => 'wiki', :action => 'show', :project_id => page.project, :id=> page.title}) %>
-  </td></tr>
+  <thead>
+    <tr>
+      <th>Page</th><th>Project</th><th>Updated On</th><th>Author</th>
+    </tr>
+  </thead>
+<% pages[0,10].each do |page| %>
+  <tr>
+    <td>
+    <%=link_to(h(page.pretty_title), {:controller => 'wiki', :action => 'show', :project_id => page.project, :id=> page.title}) %>
+    </td>
+    <td>
+      <%= page.project %>
+    </td>
+    <td>
+      <%= page.content.updated_on.strftime("%I:%M%p  %Y-%m-%d") %>
+    </td>
+    <td>
+      <%= page.content.author %>
+    </td>
+  </tr>
 <% end %>
 </table>
 
