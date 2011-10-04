@@ -20,8 +20,16 @@ pages_by_parent_id = pages.group_by(&:parent_id)
       <th>Page</th><th>Project</th><th>Updated On</th><th>Author</th>
     </tr>
   </thead>
+  <% i=0 %>
 <% pages[0,10].each do |page| %>
-  <tr>
+  <%
+    if i % 2 == 0
+      trclass = "even"
+    else
+      trclass = "odd"
+    end
+  %>
+  <tr class="<%=trclass%>">
     <td>
     <%=link_to(h(page.pretty_title), {:controller => 'wiki', :action => 'show', :project_id => page.project, :id=> page.title}) %>
     </td>
@@ -35,6 +43,7 @@ pages_by_parent_id = pages.group_by(&:parent_id)
       <%= page.content.author %>
     </td>
   </tr>
+  <% i += 1 %>
 <% end %>
 </table>
 
