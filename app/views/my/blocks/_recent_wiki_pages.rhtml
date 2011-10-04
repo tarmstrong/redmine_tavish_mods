@@ -12,8 +12,8 @@ pages_by_date = pages.group_by {|p| p.updated_on.to_date}
 pages_by_parent_id = pages.group_by(&:parent_id)
 %>
 
-<table class="list wikis">
-  <thead><td>Top 10 Most Recent Wiki Pages</td></thead>
+<table class="list issues">
+  <thead><tr><th>Top 10 Most Recent Wiki Pages</td></tr></thead>
 <% pages[0,10].each do |page | %>
   <tr><td>
   <%=link_to(h(page.pretty_title), {:controller => 'wiki', :action => 'show', :project_id => page.project, :id=> page.title}) %>
